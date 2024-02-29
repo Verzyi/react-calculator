@@ -16,25 +16,25 @@ function App() {
         handleClick({
           currentTarget: {
             textContent: e.key,
-          },
+          } as Element,
         });
       } else if (e.key === "+" || e.key === "-") {
         handleOperator({
           currentTarget: {
             textContent: e.key,
-          },
+          } as Element,
         });
       } else if (e.key === "*") {
         handleOperator({
           currentTarget: {
             textContent: e.key === "*" ? "x" : e.key,
-          },
+          } as Element,
         });
       } else if (e.key === "/") {
         handleOperator({
           currentTarget: {
             textContent: e.key === "/" ? "÷" : e.key,
-          },
+          } as Element,
         });
       } else if (e.key === ".") {
         handleDecimal();
@@ -62,7 +62,7 @@ function App() {
     if (displayState.previous.endsWith("= ")) {
       setDisplayState({
         previous: "",
-        current: e.currentTarget.textContent,
+        current: e.currentTarget.textContent ?? "",
       });
     } else {
       const buttonText = e.currentTarget.textContent; // Get text content directly from the button
