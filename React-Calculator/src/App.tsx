@@ -12,37 +12,45 @@ function App() {
   useEffect(() => {
     const handle = (e: KeyboardEvent) => {
       const { key } = e;
-      if (e.key >= "0" && e.key <= "9") {
-        handleClick({
+      if (key >= "0" && key <= "9") {
+        const syntheticEvent: React.MouseEvent<HTMLButtonElement> = {
           currentTarget: {
-            textContent: e.key,
-          } as Element,
-        });
-      } else if (e.key === "+" || e.key === "-") {
-        handleOperator({
+            textContent: key,
+          },
+          target: e.target as HTMLButtonElement,
+        } as any;
+        handleClick(syntheticEvent);
+      } else if (key === "+" || key === "-") {
+        const syntheticEvent: React.MouseEvent<HTMLButtonElement> = {
           currentTarget: {
-            textContent: e.key,
-          } as Element,
-        });
-      } else if (e.key === "*") {
-        handleOperator({
+            textContent: key,
+          },
+          target: e.target as HTMLButtonElement,
+        } as any;
+        handleOperator(syntheticEvent);
+      } else if (key === "*") {
+        const syntheticEvent: React.MouseEvent<HTMLButtonElement> = {
           currentTarget: {
-            textContent: e.key === "*" ? "x" : e.key,
-          } as Element,
-        });
-      } else if (e.key === "/") {
-        handleOperator({
+            textContent: "x",
+          },
+          target: e.target as HTMLButtonElement,
+        } as any;
+        handleOperator(syntheticEvent);
+      } else if (key === "/") {
+        const syntheticEvent: React.MouseEvent<HTMLButtonElement> = {
           currentTarget: {
-            textContent: e.key === "/" ? "÷" : e.key,
-          } as Element,
-        });
-      } else if (e.key === ".") {
+            textContent: "÷",
+          },
+          target: e.target as HTMLButtonElement,
+        } as any;
+        handleOperator(syntheticEvent);
+      } else if (key === ".") {
         handleDecimal();
-      } else if (e.key === "Enter" || e.key === "Return") {
+      } else if (key === "Enter" || key === "Return") {
         calculate();
-      } else if (e.key === "Backspace" || e.key === "Delete") {
+      } else if (key === "Backspace" || key === "Delete") {
         deleteLast();
-      } else if (e.key === "Escape") {
+      } else if (key === "Escape") {
         clearDisplay();
       }
     };
