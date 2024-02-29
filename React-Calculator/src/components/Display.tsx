@@ -3,7 +3,7 @@ interface DisplayProps {
   current: string;
 }
 
-const Display = ({ previous, current }: DisplayProps) => {
+const Display = ({ previous, current = "0" }: DisplayProps) => {
   return (
     <div className="outPut">
       <div className="previousOperand">{previous}</div>
